@@ -26,11 +26,11 @@
 <h1>QCM</h1>
 <br>
 <br>
-
+<form name ="QCM">
 <div class="row">
 <div class="col-sm-12 col-lg-6">
 
-<h2>witch class has been bann by the 2 finalist in HS 2016 competition</h2>
+<h2 id = "QCMA1">witch class has been bann by the 2 finalist in HS 2016 competition</h2>
 <div>
 <select name="class">
 <option value="1">druid </option>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="col-sm-12 col-lg-6">
-<h2>how many time DrHippi defeat Pavel</h2>
+<h2 id = "QCMA2">how many time DrHippi defeat Pavel</h2>
 
 <div>
 <input type="radio" name="win" value="1">1
@@ -58,7 +58,7 @@
 </div>
 
 <div class="col-sm-12 col-lg-6">
-<h3>Bonus: best strategy to win in HS</h3>
+<h3 id = "QCMA3">Bonus: best strategy to win in HS</h3>
 
 <div>
 <input type="radio" name="winning" value="1">RNG!!!
@@ -69,8 +69,8 @@
 </div>
 
 <div class="col-sm-12 col-lg-6">
-<h3>wrote the corect name</h3>
 
+<h3 id = "QCMA4">wrote the corect name</h3>
 
 <div>
 name of the winner <input type="text" name="winnerP"><br>
@@ -78,15 +78,54 @@ name of his oppent<input type="text" name="second"><br>
 </div>
 </div>
 </div>
+<h1 id = "answer"></h1>
+</form>
 <a href=https://playhearthstone.com/fr-fr/>HS</a>
 <br><!--a la ligne-->
 
 <div>
-<button type="button">Submit</button>
+<button type="button" onclick = "check();">Submit</button>
 </div>
 
 <div class="row">
 <div class="footer col-sm-12 col-lg-12">made by raphael.effantin@gmail.com</div>
 <a href="index.html" class="footer col-sm-12 col-lg-12">back To Home page</a>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+function check()
+{
+	var QCM1 = document.QCM.class.value
+	var QCM2 = document.QCM.win.value
+	var QCM3 = document.QCM.winning.value
+	var QCM4_1 = document.QCM.winnerP.value
+	var QCM4_2 = document.QCM.second.value
+	var corect = 0;
+	
+	if(QCM1 == 7)
+	{
+	document.getElementById("QCMA1").style.color = "green";
+	corect ++;
+	}
+	if(QCM2 == 2)
+	{
+	document.getElementById("QCMA2").style.color = "green";
+	corect ++;
+	}
+	if(QCM3 == 1)
+	{
+	document.getElementById("QCMA3").style.color = "green";
+	corect ++;
+	}
+	if(QCM4_1 == "Pavel" && QCM4_2 == "DrHippi")
+	{
+	document.getElementById("QCMA4").style.color = "green";
+	corect ++;
+	}
+	document.getElementById("answer").innerHTML = "you got " + corect +" corect answer";
+}
+	
+</script>
+
 </body>
