@@ -1,0 +1,52 @@
+<!DOCTYPE html> <html>
+<head>
+<title>Altering Form Values</title>
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ <link rel="stylesheet" type="text/css" href="CSS.css">
+</head>
+<body>
+
+<ul id="editable" style ="color:blue"> </ul>
+
+<form id="addElement">
+<label>New Card: Mana Hp Atk Name <input name="liContent" size="60" /></label>
+<input type="submit" value="Add Item" /> </form>
+
+<p><a id="clearList" href="#">Clear List</a></p>
+
+<h1 id = "title">HS card creator</h1>
+
+<style>
+.checked {
+	text-decoration: line-through;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+	// Delete all.
+	$("#clearList").click(function (event) {
+		event.preventDefault();
+		$("#editable").fadeOut('slow', function() {
+			$(this).empty().show();
+		});
+	});
+	
+	// Add new element.
+	$("#addElement").submit(function (event) {
+		event.preventDefault();
+		var new_item = $("<li><input type='checkbox'>"
+			+ $("#addElement input[name='liContent']").val() + "</input></li>").hide();
+		$("#editable").append(new_item);
+		new_item.fadeIn('slow');
+		$("#addElement input[name='liContent']").val("");
+	});
+	
+	// Check or uncheck.
+	$(document).on('click', "#editable li input", function () {
+		$(this).parent().toggleClass('checked');
+	});
+});
+</script> </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html> <html>
+<head>
+<title>Altering Form Values</title>
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ <link rel="stylesheet" type="text/css" href="CSS.css">
+</head>
+<body>
+
+<ul id="editable" style ="color:blue"> </ul>
+
+<form id="addElement">
+<label>Name: <input name="liContent" size="60" /></label>
+
+<h2 id = "subtitle">HP</h2>
+<div>
+<select name="HP">
+<option value="7">7 </option>
+<option value="8">8 </option>
+<option value="9">9 </option>
+</select>
+</div>
+
+<h2 id = "subtitle">ATK</h2>
+<div>
+<select name="ATK">
+<option value="3">3 </option>
+<option value="4">4 </option>
+<option value="5">5 </option>
+<option value="6">6 </option>
+</select>
+</div>
+
+<h2 id = "subtitle">MANA</h2>
+<div>
+<select name="MANA">
+<option value="0">0 </option>
+<option value="1">1 </option>
+<option value="2">2 </option>
+</select>
+</div>
+
+<input type="submit" value="Add Item" /> </form>
+
+<p><a id="clearList" href="#">Clear all card</a></p>
+
+<h1 id = "title">HS card creator</h1>
+
+<style>
+.checked {
+	text-decoration: line-through;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+	// Delete all.
+	$("#clearList").click(function (event) {
+		event.preventDefault();
+		$("#editable").fadeOut('slow', function() {
+			$(this).empty().show();
+		});
+	});
+	
+	// Add new element.
+	$("#addElement").submit(function (event) {
+		event.preventDefault();
+		var new_item = $("<li><input type='checkbox'>"
+			+ $("#addElement input[name='liContent']").val() + "</input></li>").hide();
+		$("#editable").append(new_item);
+		
+		
+		var new_HP= $("<li><input type='checkbox'>"
+			+ $("#addElement input[name='HP']").val() + "</input></li>").hide();
+		$("#editable").append(new_item);
+		
+		var new_ATK= $("<li><input type='checkbox'>"
+			+ $("#addElement input[name='ATK']").val() + "</input></li>").hide();
+		$("#editable").append(new_item);
+		
+		var new_MANA= $("<li><input type='checkbox'>"
+			+ $("#addElement input[name='MANA']").val() + "</input></li>").hide();
+			console.log(new_MANA, new_HP, new_ATK, new_item, "Hello, world!");
+			
+		$("#editable").append(new_MANA, new_HP, new_ATK, new_item);
+		
+		
+		new_item.fadeIn('slow');
+		$("#addElement input[name='liContent']").val("checked");
+	});
+	
+	// Check or uncheck.
+	$(document).on('click', "#editable li input", function () {
+		$(this).parent().toggleClass('checked');
+	});
+});
+</script> </body>
+</html>

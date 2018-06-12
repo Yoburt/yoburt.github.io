@@ -23,7 +23,7 @@
 </div>
 </div>
 
-<h1>QCM</h1>
+<h1 id = "title" >QCM</h1>
 <br>
 <br>
 <form name ="QCM">
@@ -108,20 +108,39 @@ function check()
 	document.getElementById("QCMA1").style.color = "green";
 	corect ++;
 	}
+	if(QCM1 != 7 && QCM1 !="")
+	{
+	document.getElementById("QCMA1").style.color = "red";
+	}
 	if(QCM2 == 2)
 	{
 	document.getElementById("QCMA2").style.color = "green";
 	corect ++;
+	}
+	if(QCM2 != 2 && QCM2 !="")
+	{
+	document.getElementById("QCMA2").style.color = "red";
 	}
 	if(QCM3 == 1)
 	{
 	document.getElementById("QCMA3").style.color = "green";
 	corect ++;
 	}
+	if(QCM3 != 1 && QCM3 !="")
+	{
+	document.getElementById("QCMA3").style.color = "red";
+	}
 	if(QCM4_1 == "Pavel" && QCM4_2 == "DrHippi")
 	{
 	document.getElementById("QCMA4").style.color = "green";
 	corect ++;
+	}
+	if(QCM4_1 != "Pavel" || QCM4_2 != "DrHippi")
+	{
+		if (QCM4_1 != "" || QCM4_2 != "")
+			{
+			document.getElementById("QCMA4").style.color = "red";
+			}
 	}
 	document.getElementById("answer").innerHTML = "you got " + corect +" corect answer";
 }
